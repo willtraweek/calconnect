@@ -47,9 +47,8 @@ function showEmails() {
 
 // Sign-in success callback
 function onLoginSuccess(googleUser) {
-  // Get the Google profile data (basic)
-  var profile = googleUser.getBasicProfile();
   // Retrieve the Google account data
+  console.log(googleUser)
   gapi.client.load('oauth2', 'v2', function () {
     var request = gapi.client.oauth2.userinfo.get({
         'userId': 'me'
@@ -83,7 +82,6 @@ function renderButton() {
 
 // Sign out the user
 function signOut() {
-  console.log("hi");
   var auth2 = gapi.auth2.getAuthInstance();
   auth2.signOut().then(function () {
     document.getElementById("user-welcome").style.display = "none";  
