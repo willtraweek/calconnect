@@ -1,8 +1,8 @@
-*Google Calendar API Documentation*
+# Google Calendar API Documentation
 
 Go to this link to see a Google Doc version of this guide (https://docs.google.com/document/d/1U-PSmfarNPeA_CshZ7gMrug3F85wqPLPHlFFLBw__QQ/edit?usp=sharing)
 
-Obtain API_KEY
+## Obtain API_KEY
 
 go to console.google.com & log on<br>
 Select Project > New Project > name it whatever > create > next to search bar, click the project you just created<br>
@@ -12,14 +12,17 @@ go back to your previous tab where you were setting up credentials and click Ref
 This will download a file called client_id.json<br>
 Move client_id.json into the folder titled google_credentials in the project folder<br>
 <br>
-If you have not already, install homebrew (source: https://brew.sh/)<br>
+
+## If you have not already, install homebrew (source: https://brew.sh/)<br>
 open terminal & run<br>
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"<br>
 <br>
-If you have not already, install miniconda<br>
+
+## If you have not already, install miniconda<br>
 `brew cask install miniconda`<br>
 <br>
-If you have not already, create appropriate virtual environment for miniconda with Python 3.7<br>
+
+## If you have not already, create appropriate virtual environment for miniconda with Python 3.7<br>
 `conda create -n py3.7 python=3.7`		// -n stands for name. This virtual env is<br>
 // called “py3.7”<br>
 `conda init zsh`					// init your appropriate shell (mine is zsh)<br>
