@@ -12,7 +12,7 @@ go back to your previous tab where you were setting up credentials and click Ref
 This will download a file called client_id.json<br>
 Move client_id.json into the folder titled google_credentials in the project folder<br>
 
-### Install homebrew (source: https://brew.sh/)
+### Install homebrew (https://brew.sh/)
 open terminal & run<br>
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"<br>
 
