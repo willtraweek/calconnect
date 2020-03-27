@@ -14,7 +14,7 @@ go to console.google.com & log on<br>
 
 ### 2. Install Homebrew (https://brew.sh/)
 open terminal & run<br>
-`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"<br>`
+`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"` <br>
 
 ### 3. Install miniconda
 `brew cask install miniconda`<br>
