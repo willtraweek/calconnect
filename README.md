@@ -7,8 +7,8 @@ Google Doc version of this guide (https://docs.google.com/document/d/1U-PSmfarNP
 go to console.google.com & log on<br>
 Select `Project` > `New Project` > name it whatever > `create` > next to search bar, click the project you just created<br>
 search `Google Calendar API` in search bar > click `Enable` <br>
-click `Create Credentials` (this will make you create OAuth client ID) > select `Google Calendar API` from dropdown menu, select `Web server` > select `User Data` > create `Authorized redirect URI` and type http://localhost:8080/ > click `set up OAuth Consent Screen` > `External` > `Create` > `Save`<br>
-go back to your previous tab where you were setting up credentials and click `Refresh` > `Download`<br>
+click `Create Credentials` (this will make you create OAuth client ID) > select `Google Calendar API` from dropdown menu, select `Web server` > select `User Data` > click `set up OAuth Consent Screen` > `External` > `Create` > `Save`<br>
+go back to your previous tab where you were setting up credentials and click `Refresh` > create `Authorized redirect URI` and type http://localhost:8080/ > `Refresh` > `Download`<br>
 This will start the download for your `client_id.json` file<br>
 Move `client_id.json` into `google_credentials` folder in the project folder<br>
 
