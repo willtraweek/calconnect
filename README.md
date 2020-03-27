@@ -20,8 +20,7 @@ open terminal & run<br>
 `brew cask install miniconda`<br>
 
 ### 4. Create virtual environment for miniconda with Python 3.7
-`conda create -n py3.7 python=3.7`		// -n stands for name. This virtual env is<br>
-// called “py3.7”<br>
+`conda create -n py3.7 python=3.7`		// -n stands for name. This virtual env is called “py3.7”<br>
 `conda init zsh`					// init your appropriate shell (mine is zsh)<br>
 `conda config --set changeps1 true`		// show (<virtual environment name>)<br>
 `conda activate py3.7`				// activate virtual environment you just created<br>
