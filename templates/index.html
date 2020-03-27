@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CalConnect</title>
+  <link rel="stylesheet" href={{ url_for('static', filename='style.css') }}>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <script>
+    let invitees = [];
+
+    function addEmail() {
+      let email = document.getElementById('input-invitee').value;
+      let regex = /^[a-z0-9](\.?[a-z0-9]){5,}@g(oogle)?mail\.com$/;
+      console.log(email, regex);
+      if (!regex.test(email)) {
+        alert("Invalid email");
+        return;
+      }
+      invitees.push(email);
+      showEmails();
+      document.getElementById('input-invitee').value = ""
+    }
+
+    function showEmails() {
+      let list = document.getElementById("invitee-list")
+      console.log(list);
+      if (invitees.length === 0) {
+        list.innerHTML = "No invitee";
+      }
+      else {
+        list.innerHTML = "Invitees: ";
+        invitees.map(invitee => {
+          let badge =  `<span class="badge badge-info ml-2"
+                              onclick=console.log('Hi')>
+                           ${invitee}
+                           <span class="ml-1">
+                              X
+                           </span>
+                        </span>`
+          list.innerHTML += badge;
+        })
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function(event) { 
+      showEmails();
+    });
+
+  </script>
+</head>
+<body>
+  <nav id="nav-container" class="breadcrumb">
+    <h1 class="logo">CalConnect</h1>
+    <form action="http://google.com" method="GET">
+      <button class="google-login">
+        <i id="google-logo" class="fa fa-google">
+        </i>
+        Login with Google
+      </button>
+    </form>
+  </nav>
+  <main class="main-form">
+    <h3>Book your appointment</h3>
+    <div id="form-body">
+      <form class="form-group">
+        <label for="input-name">Your name</label>
+        <input type="text" required class="form-control" id="input-name">
+        <div class="mt-3">
+          <label for="input-invitee">Invitee's email</label>
+        </div>  
+        <input type="email" 
+               class="form-control col-md-8 d-inline" 
+               id="input-invitee">
+        <button type="button"
+                class="ml-2 btn btn-primary"
+                onclick=addEmail()>
+          Add email 
+        </button>
+        <div id="invitee-list" class="mt-2">
+          
+        </div>
+        <button class="mt-3 btn btn-block btn-success">
+          Submit
+        </button>
+      </form>
+    </div>
+  </main>  
+</body>
+</html>
