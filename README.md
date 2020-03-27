@@ -2,7 +2,7 @@
 
 Google Doc version of this guide (https://docs.google.com/document/d/1U-PSmfarNPeA_CshZ7gMrug3F85wqPLPHlFFLBw__QQ/edit?usp=sharing)
 
-### Obtain `client_id.json` file
+### 1. Obtain `client_id.json` file
 
 go to console.google.com & log on<br>
 Select `Project` > `New Project` > name it whatever > `create` > next to search bar, click the project you just created<br>
@@ -12,21 +12,21 @@ go back to your previous tab where you were setting up credentials and click `Re
 This will start the download for your `client_id.json` file<br>
 Move `client_id.json` into `google_credentials` folder in the project folder<br>
 
-### Install Homebrew (https://brew.sh/)
+### 2. Install Homebrew (https://brew.sh/)
 open terminal & run<br>
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"<br>
 
-### Install miniconda
+### 3. Install miniconda
 `brew cask install miniconda`<br>
 
-### Create virtual environment for miniconda with Python 3.7
+### 4. Create virtual environment for miniconda with Python 3.7
 `conda create -n py3.7 python=3.7`		// -n stands for name. This virtual env is<br>
 // called “py3.7”<br>
 `conda init zsh`					// init your appropriate shell (mine is zsh)<br>
 `conda config --set changeps1 true`		// show (<virtual environment name>)<br>
 `conda activate py3.7`				// activate virtual environment you just created<br>
 
-### Install Dependencies & Run Application
+### 5. Install Dependencies & Run Application
 `pip install google-api-python-client`		// install necessary python packages<br>
 `python Google_Calendar_API_Interface.py`	// run application<br>
 
