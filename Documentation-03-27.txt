@@ -1,0 +1,27 @@
+Goal: Obtain an access token from the Google Authorization Server related to user login
+	Sample Response: 
+	https://accounts.google.com/o/oauth2/v2/auth?
+ 	scope=https%3A//www.googleapis.com/auth/drive.metadata.readonly&
+ 	access_type=offline&
+ 	include_granted_scopes=true&
+ 	response_type=code&
+ 	state=state_parameter_passthrough_value&
+ 	redirect_uri=https%3A//oauth2.example.com/code&
+ 	client_id=client_id
+
+Progress:
+-have quickstart.py which logins into google account and writes to a google doc in your drive
+-ouath_test.py logins into google drive and prints the contents of the of the drive
+
+Roadblocks:
+-To obtain credentials file/enable googleCalendarAPI need to set up a Oauth consent screen 
+	-Need: to set up a Oauth Consent Screen
+	-Requires: Application Homepage link, Application Privacy Policy link (PUBLICALLY HOSTED)  
+		-because of the webframework option
+		-solution: use cal connect or spin up my EC2 instance on AWS
+
+
+
+
+
+https://developers.google.com/identity/protocols/oauth2/web-server#prerequisites
