@@ -2,72 +2,39 @@
 <html>
 <head>
   <title>CalConnect</title>
+  
+  <meta name="google-signin-client_id" content="897203080551-6g1s210vnqc44lbv6sqoub95nvos975e.apps.googleusercontent.com">
+
+
   <link rel="stylesheet" href={{ url_for('static', filename='style.css') }}>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-  <script>
-    let invitees = [];
-
-    function addEmail() {
-      let email = document.getElementById('input-invitee').value;
-      let regex = /^[a-z0-9](\.?[a-z0-9]){5,}@g(oogle)?mail\.com$/;
-      console.log(email, regex);
-      if (!regex.test(email)) {
-        alert("Invalid email");
-        return;
-      }
-      invitees.push(email);
-      showEmails();
-      document.getElementById('input-invitee').value = ""
-    }
-
-    function showEmails() {
-      let list = document.getElementById("invitee-list")
-      console.log(list);
-      if (invitees.length === 0) {
-        list.innerHTML = "No invitee";
-      }
-      else {
-        list.innerHTML = "Invitees: ";
-        invitees.map(invitee => {
-          let badge =  `<span class="badge badge-info ml-2"
-                              onclick=console.log('Hi')>
-                           ${invitee}
-                           <span class="ml-1">
-                              X
-                           </span>
-                        </span>`
-          list.innerHTML += badge;
-        })
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", function(event) { 
-      showEmails();
-    });
-
-  </script>
+  
+  <script src={{ url_for('static', filename='script.js')}}></script>
+  <script src="https://apis.google.com/js/client:platform.js?onload=renderButton" async defer></script>
+  
 </head>
 <body>
-  <nav id="nav-container" class="breadcrumb">
-    <h1 class="logo">CalConnect</h1>
-    <form action="http://google.com" method="GET">
-      <button class="google-login">
-        <i id="google-logo" class="fa fa-google">
-        </i>
-        Login with Google
-      </button>
-    </form>
-  </nav>
+  <div id="gSignIn" class="float-right"></div>
+  <div id="user-welcome" class="float-right">
+    Welcome <span id="user-name" class="mr-3"></span> 
+    <button class="btn btn-secondary"
+            onclick=signOut()>
+      Log out
+    </button>
+  </div>
   <main class="main-form">
-    <h3>Book your appointment</h3>
+    <h3>CalConnect</h3>
     <div id="form-body">
       <form class="form-group">
-        <label for="input-name">Your name</label>
+        <label for="input-name" class="required">Your name</label>
         <input type="text" required class="form-control" id="input-name">
-        <div class="mt-3">
-          <label for="input-invitee">Invitee's email</label>
+        
+        <label for="input-event" class="required">Event name</label>
+        <input type="text" id="input-event" required class="form-control" >
+          
+        <div>
+          <label for="input-invitee">Invitee's email (Ex: user@gmail.com)</label>
         </div>  
         <input type="email" 
                class="form-control col-md-8 d-inline" 
@@ -78,10 +45,11 @@
           Add email 
         </button>
         <div id="invitee-list" class="mt-2">
-          
         </div>
+        <label for="input-description">Description</label>
+        <textarea id="input-description" class="form-control" rows="10"></textarea>
         <button class="mt-3 btn btn-block btn-success">
-          Submit
+          Book appointment
         </button>
       </form>
     </div>
