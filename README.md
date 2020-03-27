@@ -2,17 +2,17 @@
 
 Google Doc version of this guide (https://docs.google.com/document/d/1U-PSmfarNPeA_CshZ7gMrug3F85wqPLPHlFFLBw__QQ/edit?usp=sharing)
 
-### Obtain `client_id.json`
+### Obtain `client_id.json` file
 
 go to console.google.com & log on<br>
-Select Project > New Project > name it whatever > create > next to search bar, click the project you just created<br>
-search Google Calendar API in search bar > Enable<br>
-click Create Credentials (this will make you create OAuth client ID) > select Google Calendar API from dropdown menu, select Web server > select User Data > create Authorized redirect URI and type http://localhost:8080/ > click set up OAuth Consent Screen > External > Create > Save<br>
-go back to your previous tab where you were setting up credentials and click Refresh > Download<br>
-This will download a file called client_id.json<br>
-Move client_id.json into the folder titled google_credentials in the project folder<br>
+Select `Project` > `New Project` > name it whatever > `create` > next to search bar, click the project you just created<br>
+search `Google Calendar API` in search bar > click `Enable` <br>
+click `Create Credentials` (this will make you create OAuth client ID) > select `Google Calendar API` from dropdown menu, select `Web server` > select `User Data` > create `Authorized redirect URI` and type http://localhost:8080/ > click `set up OAuth Consent Screen` > `External` > `Create` > `Save`<br>
+go back to your previous tab where you were setting up credentials and click `Refresh` > `Download`<br>
+This will start the download for your `client_id.json` file<br>
+Move `client_id.json` into `google_credentials` folder in the project folder<br>
 
-### Install homebrew (https://brew.sh/)
+### Install Homebrew (https://brew.sh/)
 open terminal & run<br>
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"<br>
 
