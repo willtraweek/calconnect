@@ -2,7 +2,7 @@
 
 Google Doc version of this guide (https://docs.google.com/document/d/1U-PSmfarNPeA_CshZ7gMrug3F85wqPLPHlFFLBw__QQ/edit?usp=sharing)
 
-### Obtain API_KEY
+### Obtain client_id.json
 
 go to console.google.com & log on<br>
 Select Project > New Project > name it whatever > create > next to search bar, click the project you just created<br>
