@@ -34,5 +34,5 @@ As soon as this application begins running, it will ask you to log in to your go
 When you’re done for the day and want to exit miniconda’s virtual environment:<br>
 `conda deactivate`<br>
 
-If you find that (base) prefix on your terminal annoying and want to turn it off:<br>
+If you find that `(base)` prefix on your terminal annoying and want to turn it off:<br>
 `conda config --set changeps1 false`
