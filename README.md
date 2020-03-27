@@ -11,18 +11,15 @@ click Create Credentials (this will make you create OAuth client ID) > select Go
 go back to your previous tab where you were setting up credentials and click Refresh > Download<br>
 This will download a file called client_id.json<br>
 Move client_id.json into the folder titled google_credentials in the project folder<br>
-<br>
 
-### If you haven't already, install homebrew (source: https://brew.sh/)
+### Install homebrew (source: https://brew.sh/)
 open terminal & run<br>
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"<br>
-<br>
 
-### If you haven't already, install miniconda
+### Install miniconda
 `brew cask install miniconda`<br>
-<br>
 
-### If you haven't already, create virtual environment for miniconda with Python 3.7
+### Create virtual environment for miniconda with Python 3.7
 `conda create -n py3.7 python=3.7`		// -n stands for name. This virtual env is<br>
 // called “py3.7”<br>
 `conda init zsh`					// init your appropriate shell (mine is zsh)<br>
@@ -39,4 +36,4 @@ When you’re done for the day and want to exit miniconda’s virtual environmen
 `conda deactivate`<br>
 
 If you find that (base) prefix on your terminal annoying and want to turn it off:<br>
-`conda config --set changeps1 false`<br>
+`conda config --set changeps1 false`
