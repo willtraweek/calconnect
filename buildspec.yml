@@ -33,6 +33,7 @@ phases:
   build:
     commands:
         - pip install -r requirements.txt
+        - echo done
       # - command
       # - command
   #post_build:
