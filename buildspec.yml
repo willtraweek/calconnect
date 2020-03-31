@@ -34,7 +34,6 @@ phases:
     commands:
         - python --version
         - pip install -r requirements.txt
-        - python application.py
       # - command
       # - command
   #post_build:
