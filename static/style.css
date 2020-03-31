@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 1em 5em;
+}
+
+#nav-container {
+    position: relative;
+}
+
+#form-body {
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.invitee-email:hover {
+    cursor: pointer;
+    background-color: red;
+}
+
+.required:after {
+    content:" *";
+    color: red;
+}
