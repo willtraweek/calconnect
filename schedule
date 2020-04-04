@@ -90,7 +90,6 @@ def busy(emails, start_day, start_time, end_time, days):
         )
         .execute()
     )
-    print(emails)
 
     busy_times = {
         name: [Interval.from_calendar(x) for x in x["busy"]]
