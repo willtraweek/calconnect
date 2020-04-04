@@ -90,12 +90,13 @@ def busy(emails, start_day, start_time, end_time, days):
         )
         .execute()
     )
+    print(emails)
 
     busy_times = {
         name: [Interval.from_calendar(x) for x in x["busy"]]
         for name, x in data["calendars"].items()
     }
-
+    print(busy_times)
     groups = (
         {g: x["calendars"] for g, x in data["groups"].items()}
         if "groups" in data
@@ -109,6 +110,8 @@ def schedule_meeting(meeting, calendar, location=None, description=None):
     "Schedule a meeting on the given calendar with the given location and description."
     service = build("calendar", "v3", http=creds.authorize(Http()))
 
+    print('Meeting slots')
+    print(meeting.slots)
     body = {
         "summary": meeting.summary,
         "location": location or "",
@@ -203,7 +206,7 @@ def schedule(meetings, start_day, start_time, end_time, days, now):
     "Find the first possible schedule for the set of meetings."
     emails = set(a for m in meetings.values() for a in m.invitees)
     busy_times, groups = busy(emails, start_day, start_time, end_time, days)
-
+    print(busy_times)
     # First fill in the basic slots for the desired length of meeting
     # and expand the attendees list.
     for m, meeting in meetings.items():
@@ -318,14 +321,14 @@ if __name__ == "__main__":
     p.add_argument(
         "--day",
         help="Date of meeting YYYY-MM-DD",
-        type=valid_date
-        # type=lambda d: datetime.strptime(d, '%Y%m%d'),
+        #type=valid_date
+        type=lambda d: datetime.strptime(d, "%Y-%m-%d"),
     )
 
     args = p.parse_args()
 
-    if args.day:
-        start_day = valid_date
+    # if args.day:
+    #     start_day = valid_date.datetime.date
 
     def to_meeting(line):
         m = pat.match(line)
