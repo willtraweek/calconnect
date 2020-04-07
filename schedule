@@ -317,12 +317,12 @@ if __name__ == "__main__":
         dest="calendar",
         help="Email address of the calendar to create the meetings on.",
     )
-    p.add_argument(
-        "--day",
-        help="Date of meeting YYYY-MM-DD",
-        #type=valid_date
-        type=lambda d: datetime.strptime(d, "%Y-%m-%d"),
-    )
+    # p.add_argument(
+    #     "--day",
+    #     help="Date of meeting YYYY-MM-DD",
+    #     #type=valid_date
+    #     type=lambda d: datetime.strptime(d, "%Y-%m-%d"),
+    # )
 
     args = p.parse_args()
 
