@@ -14,13 +14,17 @@ to go through the OAuth dance via your web browser to let the app access your
 calendar. Instructions for obtaining a `client_secrets.json` are at
 https://support.google.com/googleapi/answer/6158849.
 
+Put your `client_secrets.json` and `credentials.json` in a folder one directory back 
+(outside the workspace) in a folder named `cred`. This will prevent you from putting 
+these credentials into github if you push.
+
 Then run:
 
 ```
-./schedule --dry-run meetings.txt
+./schedule --example_meetings.txt
 ```
 
-to see when it would schedule the meetings where `meetings.txt` is a
+to see when it would schedule the meetings where `example_meetings.txt` is a
 file containing one meeting per line in the format:
 
 ```
@@ -35,7 +39,7 @@ the colon is a comma-delimited list of attendees.
 Run:
 
 ```
-./schedule meetings.txt
+./schedule example_meetings.txt --calendar your_email@gmail.com
 ```
 
 to actually schedule them on people's calendars.
