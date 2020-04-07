@@ -21,7 +21,7 @@ these credentials into github if you push.
 Then run:
 
 ```
-./schedule --example_meetings.txt
+./schedule example_meetings.txt
 ```
 
 to see when it would schedule the meetings where `example_meetings.txt` is a
