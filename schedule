@@ -3,6 +3,7 @@
 "Schedule a bunch of desired meetings."
 
 import json
+import subprocess
 from datetime import datetime, time, timedelta
 
 import pendulum
@@ -277,6 +278,28 @@ def schedule_meetings(meetings, calendar, location=None, description=None):
         r = schedule_meeting(m, calendar, location, description)
         print(json.dumps(r, indent=2))
 
+def process_data() {
+    "format data from dictionary and set creds to credentials"
+    data = {
+        'host': 'mitch',
+        'emails': ['mitchm@smu.edu', 'mitchellmorrison57@gmail.com'],
+        'duration': 45,
+        'description': "info about the event"
+    }
+    # set credentials to a JSON file called credentials.txt
+    #get_credentials should navigate back a directory outside the local folder and get creds
+    # with open('../cred/credentials.json', 'w') as json_file:
+    #     json.dumps(credentials, json_file)
+
+    #prints all necesssary data to meetings.txt for running script
+    f = open("meetings.txt", 'w')
+    f.write("[" + str(data['duration']) + "] " + data['description'] + ": ")
+    f.write(data['host'] + ", ")
+    f.write(*data['emails'], sep = ", ")
+
+    #run subsystem process to run the whole code
+    subprocess.run(['python', './schedule', 'meetings.txt', '--schedule', '--calendar', data['host']], shell=True)
+}
 
 if __name__ == "__main__":
 
