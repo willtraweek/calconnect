@@ -1,6 +1,6 @@
 # function that gets attendees who are not subscribed
 
-from `not_subscribed.py`, import the function on line 78, `get_not_subscribed_users(jsonFileName)`
+from `not_subscribed.py`, import the function on line 78, `get_unsubscribed_users(jsonFileName)`
 
 function's **input**: json file (ex: `scheduledMeeting.json`)
 
