@@ -17,5 +17,5 @@ file structure (just like Mitchell's):<br>
 `│   ├── not_subscribed.py`      <br>
 `│   └── scheduledMeeting.json`  <br>
 `└── google_credentials`         <br>
-&nbsp;&nbsp;&nbsp;&nbsp;    `├── client_secret.json`     <br>
-&nbsp;&nbsp;&nbsp;&nbsp;    `└── credentials.json `
+&nbsp;&nbsp;&nbsp;    `├── client_secret.json`     <br>
+&nbsp;&nbsp;&nbsp;    `└── credentials.json `
