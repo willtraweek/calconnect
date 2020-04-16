@@ -8,3 +8,14 @@ function's **output**: python list of invitees whom the host has not subscribed 
 
 to run: `python not_subscribed.py`
 
+file structure (just like Mitchell's)
+
+├── calconnect
+│   ├── credentials.py
+│   ├── get_credentials.py
+│   ├── not_subscribed.py
+│   └── scheduledMeeting.json
+├── contacts.txt
+└── google_credentials
+    ├── client_secret.json
+    └── credentials.json
