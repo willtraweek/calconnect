@@ -12,12 +12,12 @@ to run: `python not_subscribed.py`
 
 file structure (just like Mitchell's)
 
-├── calconnect                  <br>
+`├── calconnect                  <br>
 │   ├── credentials.py          <br>
 │   ├── get_credentials.py      <br>
 │   ├── not_subscribed.py       <br>
 │   └── scheduledMeeting.json   <br>
 ├── contacts.txt                <br>
-└── google_credentials          <br>
-    ├── client_secret.json      <br>
-    └── credentials.json 
+└── google_credentials 
+    ├── client_secret.json 
+    └── credentials.json `
