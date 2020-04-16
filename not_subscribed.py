@@ -75,7 +75,7 @@ def delete_dummy_event(api):
 
 
 # ****************  LE, THIS IS THE FUNCTION YOU WANT TO EXPORT!!! **************** 
-def get_not_subscribed_users(jsonFileName):
+def get_unsubscribed_users(jsonFileName):
     api                     = build('calendar', 'v3', http=creds.authorize(Http())) # google cal api
     invitees                = get_invitees_emails(jsonFileName)
     next30DaysSchedule      = get_schedule_for_next_30_days(invitees, api)
@@ -87,7 +87,7 @@ def get_not_subscribed_users(jsonFileName):
     return invitees_not_subscribed
 
 #def main():
-#    get_not_subscribed_users('scheduledMeeting.json')
+#    get_unsubscribed_users('scheduledMeeting.json')
 
 #if __name__ == '__main__': 
 #    main()
