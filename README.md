@@ -10,8 +10,7 @@ to get credentials: `python get_credentials.py`
 
 to run: `python not_subscribed.py`
 
-file structure (just like Mitchell's)
-
+file structure (just like Mitchell's):<br>
 `├── calconnect`                 <br>
 `│   ├── credentials.py`         <br>
 `│   ├── get_credentials.py`     <br>
