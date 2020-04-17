@@ -8,3 +8,5 @@ scopes = [
 ]
 store = file.Storage("../cred/credentials.json")
 creds = store.get()
+print(creds)
+
