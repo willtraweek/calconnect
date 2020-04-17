@@ -48,13 +48,13 @@ function showEmails() {
 // Sign-in success callback
 function onLoginSuccess(googleUser) {
   // Retrieve the Google account data
-  // console.log(googleUser)
+  console.log(googleUser)
   gapi.client.load('oauth2', 'v2', function () {
     var request = gapi.client.oauth2.userinfo.get({
         'userId': 'me'
     });
     request.execute(function (resp) {
-      console.log(resp)
+      // console.log(resp);
       document.getElementById("gSignIn").style.display = "none";
       document.getElementById("user-name").innerHTML = resp.given_name;
       document.getElementById("user-welcome").style.display = "block";
