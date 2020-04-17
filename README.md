@@ -43,3 +43,21 @@ Run:
 ```
 
 to actually schedule them on people's calendars.
+
+------------------------------------------------------------
+
+UPDATES TO CODE:
+Now to run the entire program call the function process_data(data, credentials) 
+    This function will call a subsystem process to run the entire scheduling process
+    
+    VARIABLES
+        data {
+            'host': '''host email'''
+            'emails' : []
+            'start' : datetime
+            'duration' : time in minutes
+            'description' : '''short description'''
+        }
+        
+        credentials
+            json file containing oauth information
