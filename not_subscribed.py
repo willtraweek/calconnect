@@ -1,6 +1,6 @@
 import json                 # reading in json file
-# import pprint
-# pp = pprint.PrettyPrinter() # pretty printing json data
+import pprint
+pp = pprint.PrettyPrinter() # pretty printing json data
 
 from httplib2 import Http             # connect
 from apiclient.discovery import build # to
@@ -12,6 +12,7 @@ from datetime import timedelta  # add time
 
 def get_invitees_emails(jsonFileName):
     data     = json.load(open('./' + jsonFileName)) # from json file
+    #pp.pprint(data)
     return data['invitees']                         # extract invitee emails
 
 
@@ -67,7 +68,7 @@ def delete_dummy_event(api):
 
     dummyIds = []                                   # gather dummy event ids
     for event in events: 
-        if event['summary'] == 'dummy':
+        if 'summary' in event.keys() and event['summary'] == 'dummy':
             dummyIds.append(event['id'])
 
     for dummyId in dummyIds:                        # delete events with those ids
@@ -84,10 +85,11 @@ def get_unsubscribed_users(jsonFileName):
     next24HourSchedule      = get_schedule_for_next_24_hours(invitees_with_empty_cal, api)
     invitees_not_subscribed = get_invitees_not_subscribed(invitees_with_empty_cal, next24HourSchedule)
     delete_dummy_event(api)
+    print(invitees_not_subscribed)
     return invitees_not_subscribed
 
-#def main():
-#    get_unsubscribed_users('scheduledMeeting.json')
+def main():
+    get_unsubscribed_users('scheduledMeeting.json')
 
-#if __name__ == '__main__': 
-#    main()
+if __name__ == '__main__': 
+    main()
