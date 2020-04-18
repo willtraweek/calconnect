@@ -44,17 +44,18 @@ function showEmails() {
   }
 }
 
+var clientId = '216755557118-p3v6c9ajm4bmmk4oh73vs83a05mi7g10.apps.googleusercontent.com';
 
 // Sign-in success callback
 function onLoginSuccess(googleUser) {
+  console.log(googleUser);
+
   // Retrieve the Google account data
-  console.log(googleUser)
   gapi.client.load('oauth2', 'v2', function () {
     var request = gapi.client.oauth2.userinfo.get({
-        'userId': 'me'
+         'userId': 'me'
     });
     request.execute(function (resp) {
-      // console.log(resp);
       document.getElementById("gSignIn").style.display = "none";
       document.getElementById("user-name").innerHTML = resp.given_name;
       document.getElementById("user-welcome").style.display = "block";
@@ -70,7 +71,7 @@ function onLoginFailure(error) {
 // Render Google Sign-in button
 function renderButton() {
   gapi.signin2.render('gSignIn', {
-      'scope': 'profile email',
+      'scope': 'profile email https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/admin.directory.resource.calendar.readonly',
       'width': 240,
       'height': 50,
       'longtitle': true,
@@ -91,7 +92,6 @@ function signOut() {
   
   auth2.disconnect();
 }
-
 
 
 document.addEventListener("DOMContentLoaded", function(event) { 
