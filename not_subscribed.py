@@ -1,6 +1,5 @@
-import json                 # reading in json file
-import pprint
-pp = pprint.PrettyPrinter() # pretty printing json data
+#import pprint
+#pp = pprint.PrettyPrinter() # pretty printing json data
 
 from httplib2 import Http             # connect
 from apiclient.discovery import build # to
@@ -8,13 +7,6 @@ from credentials import creds         # api
 
 import pendulum                 # datetime + timezone
 from datetime import timedelta  # add time
-
-
-def get_invitees_emails(jsonFileName):
-    data     = json.load(open('./' + jsonFileName)) # from json file
-    #pp.pprint(data)
-    return data['invitees']                         # extract invitee emails
-
 
 def dateTime(_days=0, _hours=0):                    # get datetime with delay of days or hours
     t = (pendulum.now() + timedelta(days=_days, hours=_hours)).strftime('%Y-%m-%dT%H:%M:00%z')
@@ -74,22 +66,22 @@ def delete_dummy_event(api):
     for dummyId in dummyIds:                        # delete events with those ids
         api.events().delete(calendarId='primary', eventId=dummyId, sendNotifications=False).execute()
 
-
 # ****************  LE, THIS IS THE FUNCTION YOU WANT TO EXPORT!!! **************** 
-def get_unsubscribed_users(jsonFileName):
+def get_unsubscribed_users(invitees):
     api                     = build('calendar', 'v3', http=creds.authorize(Http())) # google cal api
-    invitees                = get_invitees_emails(jsonFileName)
     next30DaysSchedule      = get_schedule_for_next_30_days(invitees, api)
     invitees_with_empty_cal = get_invitees_with_empty_calendar(invitees, next30DaysSchedule)
     schedule_dummy_event(invitees_with_empty_cal, api) # dummy event occurs an hr from now
     next24HourSchedule      = get_schedule_for_next_24_hours(invitees_with_empty_cal, api)
     invitees_not_subscribed = get_invitees_not_subscribed(invitees_with_empty_cal, next24HourSchedule)
     delete_dummy_event(api)
-    print(invitees_not_subscribed)
+    #print(invitees_not_subscribed)
     return invitees_not_subscribed
 
-def main():
-    get_unsubscribed_users('scheduledMeeting.json')
+#def main():
+#    invitees = ["james.jones.miller.93@gmail.com", "lephuocdinh99@gmail.com", "ben.freddie.johnson@gmail.com",
+#                "annie.xiu.lam@gmail.com", "jim.erso.prescott@gmail.com", "john.yohan.park@gmail.com"]
+#    get_unsubscribed_users(invitees)
 
-if __name__ == '__main__': 
-    main()
+#if __name__ == '__main__': 
+#    main()
