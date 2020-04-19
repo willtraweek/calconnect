@@ -1,7 +1,3 @@
-const CLIENTID     = '274758263617-i1uctfl4ckf00nbjr8th8ditk0u2nvgf.apps.googleusercontent.com'
-const CLIENTSECRET = 'XhGFua7j_hnhOBIalwcWSHvV'
-const REFRESHTOKEN = '1//04Qyiq_xb1vKdCgYIARAAGAQSNwF-L9Ir1X_CyjRgCcRXJ6SGFQx3jLcg6uU7ebJGorifEXOkQg1ICQKVFO1fKdBHIvI1l4XExEU'
-
 // import
 const express    = require('express')      // express framework
 const bodyParser = require('body-parser')  // http post req handler
