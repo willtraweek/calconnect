@@ -7,7 +7,7 @@ To run, you need to include your own `client_secret.json` file obtained from goo
 ### Instructions
 `cd` into `frontend` and run `npm install`<br/>
 `cd` into `backend` and run `npm install`<br/>
-while still in `backend`, run `npm start`<br/>
+in `backend`, run `npm start`<br/>
 
 got to `http://localhost:3000`
 
