@@ -11,10 +11,10 @@ while still in `backend`, run `npm start`<br/>
 
 got to `http://localhost:3000`
 
-completed
+### Completed
 - frontend submits form data to backend, backend uses this data to schedule an event on host's and attendee's google calendars
 
-incomplete
+### Incomplete
 - there should be an alert box from the browser after the user submits the event from
 - determining who's not subscribed
 - coming up with first-fit time that is available on everyone's calendar
