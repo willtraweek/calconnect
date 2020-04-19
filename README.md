@@ -2,7 +2,7 @@
 
 For backup.
 
-To run, you need to include your own `client_secret.json` file obtained from google cloud console and paste it or replace it  in `calconnect/frontend/src`
+To run, you need to include your own `client_secret.json` file obtained from google cloud console and paste or replace it in `calconnect/frontend/src`
 
 ### Instructions
 `cd` into `frontend` and run `npm install`<br/>
