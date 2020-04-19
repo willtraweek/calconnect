@@ -3,9 +3,10 @@ import axios from 'axios'
 import { Button, Form, Container, Row, Col } from 'react-bootstrap'
 import { GoogleLogin, GoogleLogout } from 'react-google-login'
 
+import client_secret from '../client_secret.json'
 const APIURL        = 'http://localhost:8080'
-const CLIENT_ID     = '<PASTE YOUR CLIENT ID HERE>'
-const CLIENT_SECRET = '<PASTE YOUR CLIENT SECRET HERE>'
+const CLIENT_ID     = client_secret.web.client_id
+const CLIENT_SECRET = client_secret.web.client_secret
 const SCOPE         = 'profile email https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/admin.directory.resource.calendar.readonly'
 
 class Home extends React.Component {
@@ -123,15 +124,15 @@ class Home extends React.Component {
             earliest, latest, hours, minutes, emails, description } = this.state
     const formData = { client_id, client_secret, access_token, host_name, event_name, 
                        location, earliest, latest, hours, minutes, emails, description }
-    //console.log(formData)
-    axios.post(APIURL + '/api/receive', formData) // send data to backend
-    .then(res => console.log(res.data.msg))       // print response
+    console.log(formData)
+    axios.post(APIURL + '/receive', formData) // send data to backend
+    .then(res => console.log(res.data.msg))   // print response
   }
 
   render =() => 
     <div>
       {!this.state.logged_in && this.renderLogin()}
-      {this.state.logged_in && this.renderForm()}
+      { this.state.logged_in && this.renderForm() }
     </div>
 }
 

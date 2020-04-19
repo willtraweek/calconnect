@@ -19,11 +19,8 @@ function schedule(data) {
   //start.setDate(start.getDay() + delay) // set an event for tomorrow
 
   const end = new Date()
-  console.log(end)
   end.setHours(end.getHours() + parseInt(data.hours))
-  console.log(end)
   end.setMinutes(end.getMinutes() + parseInt(data.minutes))
-  console.log(end)
 
   //console.log((end-start)/3600000) // delay in hours
   
@@ -47,7 +44,7 @@ function schedule(data) {
     attendees: invitees
   }
 
-  console.log(event)
+  //console.log(event)
 
   // insert event into calendar
   calendar.freebusy.query(  
