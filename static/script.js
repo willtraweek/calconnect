@@ -54,6 +54,7 @@ function onLoginSuccess(googleUser) {
         'userId': 'me'
     });
     request.execute(function (resp) {
+      // console.log(resp);
       document.getElementById("gSignIn").style.display = "none";
       document.getElementById("user-name").innerHTML = resp.given_name;
       document.getElementById("user-welcome").style.display = "block";
