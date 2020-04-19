@@ -1,10 +1,10 @@
 # function that gets attendees who are not subscribed
 
-pip install<br/>
+`pip install<br/>
   oauth2client<br/>
   --upgrade httplib2<br/>
   --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib<br/>
-  pendulum<br/>
+  pendulum<br/>`
 
 
 from `not_subscribed.py`, import the function on line 78, `get_unsubscribed_users(jsonFileName)`
