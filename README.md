@@ -1,4 +1,4 @@
-# React, Node, Express Implementation of Cal Connect
+# Node, Express, React Implementation of Cal Connect
 
 For backup.
 
