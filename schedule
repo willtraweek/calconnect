@@ -3,6 +3,7 @@
 "Schedule a bunch of desired meetings."
 
 import json
+import argparse
 import subprocess
 from datetime import datetime, time, timedelta
 
@@ -96,7 +97,6 @@ def busy(emails, start_day, start_time, end_time, days):
         name: [Interval.from_calendar(x) for x in x["busy"]]
         for name, x in data["calendars"].items()
     }
-    print(busy_times)
     groups = (
         {g: x["calendars"] for g, x in data["groups"].items()}
         if "groups" in data
@@ -287,8 +287,8 @@ if __name__ == "__main__":
     pacific = pendulum.timezone("US/Pacific")
     start_day = datetime.today() + timedelta(days=1)
     print(start_day)
-    start_time = time(9, 0, tzinfo=pacific)
-    end_time = time(14, 0, tzinfo=pacific)
+    start_time = time(8, 0, tzinfo=pacific)
+    end_time = time(15, 0, tzinfo=pacific)
     days = 60
     now = datetime.now(tz=pacific)
 
@@ -302,6 +302,11 @@ if __name__ == "__main__":
     pat = re.compile(r"^\[(\d+)\] *(.*?): *(.*)$")
 
     p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument(
+        "date",
+        help="Date of meeting YYYY-MM-DD",
+        type=lambda s: datetime.strptime(s, "%Y-%m-%d")
+    )
     p.add_argument(
         "meetings",
         help="File containing meeting specs, one per line.",
@@ -318,17 +323,13 @@ if __name__ == "__main__":
         dest="calendar",
         help="Email address of the calendar to create the meetings on.",
     )
-    # p.add_argument(
-    #     "--day",
-    #     help="Date of meeting YYYY-MM-DD",
-    #     #type=valid_date
-    #     type=lambda d: datetime.strptime(d, "%YYYY-%MM-%DD"),
-    # )
 
     args = p.parse_args()
 
     # if args.day:
     #     start_day = valid_date.datetime.date
+
+    start_day = args.date
 
     def to_meeting(line):
         m = pat.match(line)
@@ -336,6 +337,8 @@ if __name__ == "__main__":
             m.group(2), int(m.group(1)), frozenset(re.split(r", *", m.group(3)))
         )
 
+    # start_day = datetime.strptime(args.day, 'YYYY-DD-MM')
+    print(start_day)
     meetings = {id: to_meeting(line[:-1]) for id, line in enumerate(args.meetings)}
 
     meetings = schedule(meetings, start_day, start_time, end_time, days, now)

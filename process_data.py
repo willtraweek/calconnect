@@ -2,11 +2,13 @@ import subprocess
 import json
 import csv
 
+start_date = '2020-04-22'
 data = {
-        'host': 'mitchellmorrison57@gmail.com',
-        'emails': ['lephuocdinh99@gmail.com'],
-        'duration': 45,
-        'description': "info about the event"
+        'host': 'lephuocdinh99@gmail.com',
+        'emails': ['mitchellmorrison57@gmail.com', 'jim.erso.prescott@gmail.com'],
+        'duration': 60,
+        'description': "test event",
+        'start_date': start_date
     }
 
 
@@ -26,7 +28,8 @@ def process_data(data):
     f.close()
 
 #    run subsystem process to run the whole code
-    subprocess.call(['./schedule', 'meetings.txt', '--schedule', '--calendar', data['host']])
+    subprocess.call(['./schedule', data['start_date'], 'meetings.txt', '--schedule', '--calendar', data['host']])
+    # subprocess.call(['./schedule', data['start_date'], 'meetings.txt', '--calendar', data['host']])
 
 
 process_data(data)
