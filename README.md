@@ -17,4 +17,4 @@ go to `http://localhost:3000`
 ### Incomplete
 - there should be an alert box from the browser after the user submits the event from
 - determining who's not subscribed
-- coming up with first-fit time that is available on everyone's calendar
+- coming up with first time that is available on everyone's calendar
