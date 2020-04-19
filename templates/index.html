@@ -3,13 +3,19 @@
 <head>
   <title>CalConnect</title>
   
-  <meta name="google-signin-client_id" content="897203080551-6g1s210vnqc44lbv6sqoub95nvos975e.apps.googleusercontent.com">
-
+  <meta name="google-signin-client_id" content="216755557118-p3v6c9ajm4bmmk4oh73vs83a05mi7g10.apps.googleusercontent.com">
 
   <link rel="stylesheet" href={{ url_for('static', filename='style.css') }}>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src={{ url_for('static', filename='script.js')}}></script>
   <script src="https://apis.google.com/js/client:platform.js?onload=renderButton" async defer></script>
   
@@ -26,63 +32,76 @@
   <main class="main-form">
     <h3>CalConnect</h3>
     <div id="form-body">
-      <form>
-        <div class="form-group">
-          <label for="input-name" class="required">Your name</label>
-          <input type="text" required class="form-control" id="input-name">
-        </div>
+      <form action="" method="post" id="form">
         <div class="form-group">
           <label for="input-event" class="required">Event name</label>
-          <input type="text" id="input-event" required class="form-control">
+          <input type="text" id="input-event" name="event" required class="form-control">
         </div>
 
         <div class="form-row">
-          <div class="form-group col-md-3">
-            <label for="input-start-date" class="required">From</label>
-            <input type="date" class="form-control" id="input-start-date" required>
+          <div class="form-group col-md-3 mr-3">
+            <label for="input-start-date" class="required">Date</label>
+            <input type="date" class="form-control" name="date" id="input-start-date" required>
           </div>
-          <div class="form-group col-md-3">
-            <label for="input-end-date" class="required">To</label>
-            <input type="date" class="form-control" id="input-end-date" required>
-          </div>
-          <div class="col-md-4 ml-5">
-            <div>
-              <label for="input-duration-hour" class="required">Duration</label>
-            </div>
+          <div class="form-group col-md-2">
+            <label for="input-duration" class="required">Duration</label>
             <div class="form-inline">
-              <input id='input-hour' type='number' min='0' max='24' value="0" class="form-control col-md-3">
-              <label for='h' class="ml-1 mr-3">hour(s)</label>
-              <input id='input-min' type='number' min='0' max='59' value="0" class="form-control col-md-3">
+              <input id='input-duration' type='number' min='1' max='300' value="0" class="form-control col-md-7" name='duration'>
               <label for='m' class="ml-1">min(s)</label>
             </div>
           </div>
+          <div class="form-group col-md-6 mx-auto">
+            <div>
+              <label for="input-invitee">Invitee's email (Ex: user@gmail.com)</label>
+            </div>  
+            <input type="email" 
+                   class="form-control col-md-8 d-inline" 
+                   id="input-invitee"
+            >
+            <button type="button"
+                    class="ml-2 btn btn-primary"
+                    onclick=addEmail()>
+              Add email 
+            </button>
+          </div>
         </div>
         
-        <div class="form-group">
-          <div>
-            <label for="input-invitee">Invitee's email (Ex: user@gmail.com)</label>
-          </div>  
-          <input type="email" 
-                 class="form-control col-md-8 d-inline" 
-                 id="input-invitee"
-          >
-          <button type="button"
-                  class="ml-2 btn btn-primary"
-                  onclick=addEmail()>
-            Add email 
-          </button>
-          <div id="invitee-list" class="mt-2"></div>
-        </div>
+        
+        <div id="invitee-list" class="mb-2"></div>
+        <input type="hidden" name="emails" value="" id="invitee-emails">
 
         <div class="form-group">
           <label for="input-description">Description</label>
-          <textarea id="input-description" class="form-control" rows="10"></textarea>
+          <textarea id="input-description" class="form-control" rows="10" name="description"></textarea>
         </div>
-
         <button class="mt-3 btn btn-block btn-success">
           Book appointment
         </button>
       </form>
+
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal" id="launch-modal" style="display:none">
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modal-title">Thank you!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" id="modal-body">
+              Thank you!
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </main>  
 </body>
