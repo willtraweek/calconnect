@@ -1,10 +1,23 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 application = Flask(__name__)
 app = application
 
 
-@app.route("/")
+@app.route("/submit", methods=['POST'])
+def submit():
+    data = request.get_json()
+    # print(form)
+    result = {
+    }
+    if (len(data['emails']) == 1):
+        result["result"] = "ALONE"
+    else:
+        result["result"] = "Thanks"
+    return result
+
+
+@app.route("/", methods=['GET'])
 def index():
     return render_template('index.html')
 
@@ -13,5 +26,5 @@ def index():
 if __name__ == "__main__":
     # Setting debug to True enables debug output. This line should be
     # removed before deploying a production app.
-    app.debug = False
-    app.run(ssl_context=('cert.pem', 'key.pem'))
+    app.debug = True
+    app.run()
