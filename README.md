@@ -5,9 +5,9 @@ For backup.
 To run, you need to include your client_id and client_secret from google OAuth2 and paste them into `Home.jsx` in calconnect/frontend/src, which you can obtain from the google cloud console.
 
 ### Instructions
-cd into frontend and run `npm install`<br/>
-cd into backend and run `npm install`<br/>
-while in backend, run `npm start`<br/>
+`cd` into `frontend` and run `npm install`<br/>
+`cd` into `backend` and run `npm install`<br/>
+while still in `backend`, run `npm start`<br/>
 
 got to `http://localhost:3000`
 
