@@ -2,7 +2,7 @@
 const express    = require('express')      // express framework
 const bodyParser = require('body-parser')  // http post req handler
 const cors       = require('cors')         // frontend backend api calling
-const schedule   = require('./schedule')   // schedule event
+const schedule   = require('./schedule')   // import schedule event function
 
 // instantiate app
 const app = express()
