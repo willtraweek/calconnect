@@ -1,6 +1,6 @@
 # function that gets attendees who are not subscribed
 
-To install necessary packages:
+To install necessary packages:<br/>
 `pip install 
   oauth2client 
   --upgrade httplib2 
