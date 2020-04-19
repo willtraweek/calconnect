@@ -12,7 +12,7 @@ in `backend`, run `npm start`<br/>
 go to `http://localhost:3000`
 
 ### Completed
-- frontend submits form data to backend, backend uses this data to schedule an event on host's and attendee's google calendars
+- frontend submits form data to backend, backend uses this event data to schedule an event on host's and attendees' google calendars
 
 ### Incomplete
 - there should be an alert box from the browser after the user submits the event from
