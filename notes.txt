@@ -1,0 +1,84 @@
+Install dependencies
+    npm init
+    npm install
+        body-parser
+        cors
+        express
+        mysql
+        winston
+            --save
+    npm install
+        nodemon
+            --save-dev
+
+Init server
+    touch server.js
+    open server.js
+    const express = require('express')
+    const app = express()
+    const port = 8080
+    app.get('/', (req, res) => res.send('Hello World!'))
+    app.listen(port, () => console.log(`App running on http://localhost:${port}`))
+
+Init mysql
+    brew install mysql
+    mysql.server.start
+    mysql -u root -p
+    *enter*
+    ALTER USER 'root'@'localhost' IDENTIFIED BY '';
+    mysql.server stop
+
+Interacting w/ docker container
+    docker ps
+    docker exec -t -i <mysql_docker_image_name> /bin/bash
+    mysql
+
+    user: wiki-sport-main
+    password: wikisport
+
+docker exec -t -i wikisports_wiki-sports-db_1 /bin/bash
+mysql -u wiki-sport-main -p
+wikisport
+docker-compose down -v
+docker system prune -a --volumes
+
+docker rmi $(docker images -q) --force  // remove ALL images
+docker rm $(docker ps -a -q) -f         // remove ALL containers
+docker volume prune                     // remove ALL volumes
+docker container prune                  // remove ALL container
+
+--------------------------------------------------------------------------------------------------
+
+input:  player name
+output: career stats
+        career earnings
+        stats for each year
+        # of championships (can be sorted)
+        contract details
+
+input:  team name
+output: brief description of that team
+        team roster for each year
+        titles won & in what years
+        amount of fan base
+        
+input:  stat acronym
+output: sortable list of players who have that stat
+
+input:  search teams
+output: list of teams
+
+input:  search players
+output: list of players
+
+input:  search stats (MVP, TD, etc)
+output: list of stats and what each stat acronym stands for
+
+future algorithm:
+- does it say
+    - "stats"
+    - "teams"
+    - "players"
+    - stat acronym
+    - team name
+    - player name
