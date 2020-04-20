@@ -6,7 +6,6 @@ scopes = [
     "https://www.googleapis.com/auth/calendar",
     "https://www.googleapis.com/auth/admin.directory.resource.calendar.readonly",
 ]
-store = file.Storage("../google_credentials/credentials.json")
+store = file.Storage("json/credentials.json")
 creds = store.get()
-print(creds)
 

@@ -75,13 +75,14 @@ def get_unsubscribed_users(invitees):
     next24HourSchedule      = get_schedule_for_next_24_hours(invitees_with_empty_cal, api)
     invitees_not_subscribed = get_invitees_not_subscribed(invitees_with_empty_cal, next24HourSchedule)
     delete_dummy_event(api)
-    #print(invitees_not_subscribed)
+    print(invitees_not_subscribed)
     return invitees_not_subscribed
 
-#def main():
+# def main():
+#     # invitees = ["jim.erso.prescott@gmail.com"]
 #    invitees = ["james.jones.miller.93@gmail.com", "lephuocdinh99@gmail.com", "ben.freddie.johnson@gmail.com",
 #                "annie.xiu.lam@gmail.com", "jim.erso.prescott@gmail.com", "john.yohan.park@gmail.com"]
-#    get_unsubscribed_users(invitees)
+#     get_unsubscribed_users(invitees)
 
-#if __name__ == '__main__': 
-#    main()
+# if __name__ == '__main__': 
+#     main()

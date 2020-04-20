@@ -107,6 +107,22 @@ function signOut() {
 }
 
 
+// return a message to user
+function handleResponse(resp) {
+  if (resp['unsubscribedEmails'].length > 0){
+    message = "Cannot book appointment. You need to subscribe these user(s).\n"
+    message += "<ul>\n";
+    resp['unsubscribedEmails'].map(email => {
+      message += `<li>${email}</li>\n`;
+    });
+    message += "</ul>"
+    return message
+  }
+  else {
+    return "We booked your appointment! Thank you for using our website!";
+  }
+}
+
 function formSubmit() {
   if (invitees.length == 0) {
     alert("You have to login to book");
@@ -131,14 +147,17 @@ function formSubmit() {
     dataType : 'json',
     data : JSON.stringify(data),
     success: function(result, status) {
-      $("#modal-body").html(result["result"]);
+      message = handleResponse(result);
+      $("#modal-body").html(message);
       $("#launch-modal").click();
+
     },
     error: function(jqXHR, textStatus, errorThrown) {
       console.log(jqXHR, textStatus, errorThrown);
     }
   })
 }
+
 
 // load all contents
 document.addEventListener("DOMContentLoaded", function(event) { 
