@@ -56,7 +56,7 @@ def submit():
     create_credentials(access_token)
 
     # get unsubscribed users
-    response['unsubscribedEmails'] = get_unsubscribed_users(data['emails'])
+    response['unsubscribedEmails'] = get_unsubscribed_users(data['emails'][1:])
 
     if (len(response['unsubscribedEmails']) == 0): # good sign, let's book
         book_appointments(data)  

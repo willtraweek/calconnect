@@ -126,6 +126,10 @@ function handleResponse(resp) {
     $("#modal-title").html("Thank you <3");
     $("#modal-button").addClass("btn-success");
     $("#modal-button").removeClass("btn-danger");
+    document.getElementById("modal-button").onclick = 
+      function() {
+        location.reload();
+      }
   }
 }
 
