@@ -2,7 +2,7 @@
 #pp = pprint.PrettyPrinter() # pretty printing json data
 
 from httplib2 import Http             # connect
-from apiclient.discovery import build # to
+from googleapiclient.discovery import build
 from credentials import creds         # api
 
 import pendulum                 # datetime + timezone
@@ -78,11 +78,13 @@ def get_unsubscribed_users(invitees):
     print(invitees_not_subscribed)
     return invitees_not_subscribed
 
-# def main():
-#     # invitees = ["jim.erso.prescott@gmail.com"]
-#    invitees = ["james.jones.miller.93@gmail.com", "lephuocdinh99@gmail.com", "ben.freddie.johnson@gmail.com",
-#                "annie.xiu.lam@gmail.com", "jim.erso.prescott@gmail.com", "john.yohan.park@gmail.com"]
-#     get_unsubscribed_users(invitees)
+'''
+def main():
+    invitees = ["jim.erso.prescott@gmail.com", "lephuocdinh99@gmail.com"]
+    #invitees = ["james.jones.miller.93@gmail.com", "lephuocdinh99@gmail.com", "ben.freddie.johnson@gmail.com",
+    #            "annie.xiu.lam@gmail.com", "jim.erso.prescott@gmail.com", "john.yohan.park@gmail.com"]
+    get_unsubscribed_users(invitees)
 
-# if __name__ == '__main__': 
-#     main()
+if __name__ == '__main__': 
+    main()
+'''
