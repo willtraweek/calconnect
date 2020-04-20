@@ -2,19 +2,19 @@ import subprocess
 import json
 import csv
 
-start_date = '2020-04-22'
-data = {
-        'host': 'lephuocdinh99@gmail.com',
-        'emails': ['mitchellmorrison57@gmail.com', 'jim.erso.prescott@gmail.com'],
-        'duration': 60,
-        'description': "test event",
-        'start_date': start_date
-    }
+# start_date = '2020-04-22'
+# data = {
+#         'host': 'lephuocdinh99@gmail.com',
+#         'emails': ['mitchellmorrison57@gmail.com', 'jim.erso.prescott@gmail.com'],
+#         'duration': 60,
+#         'description': "test event1",
+#         'start_date': start_date
+#     }
 
 
 def process_data(data):
     "format data from dictionary and set creds to credentials"
-
+    print(data)
     # set credentials to a JSON file called credentials.txt
     # get_credentials should navigate back a directory outside the local folder and get creds
     # with open('../cred/credentials.json', 'w') as json_file:
@@ -32,4 +32,4 @@ def process_data(data):
     # subprocess.call(['./schedule', data['start_date'], 'meetings.txt', '--calendar', data['host']])
 
 
-process_data(data)
+# process_data(data)

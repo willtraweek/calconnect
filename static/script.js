@@ -108,16 +108,24 @@ function signOut() {
 // return a message to user
 function handleResponse(resp) {
   if (resp['unsubscribedEmails'].length > 0){
-    message = "Cannot book appointment. You need to subscribe these user(s).\n"
+    message = "We are not able to book the appointment. You need to subscribe these user(s):\n"
     message += "<ul>\n";
     resp['unsubscribedEmails'].map(email => {
       message += `<li>${email}</li>\n`;
     });
     message += "</ul>"
-    return message
+    $("#modal-body").html(message);
+    $("#modal-title").html("Sorry :(");
+    // change modal button green -> red
+    $("#modal-button").removeClass("btn-success");
+    $("#modal-button").addClass("btn-danger");
   }
   else {
-    return "We booked your appointment! Thank you for using our website!";
+    let message = "We booked your appointment! Thank you for using our website!";
+    $("#modal-body").html(message);
+    $("#modal-title").html("Thank you <3");
+    $("#modal-button").addClass("btn-success");
+    $("#modal-button").removeClass("btn-danger");
   }
 }
 
@@ -145,10 +153,8 @@ function formSubmit() {
     dataType : 'json',
     data : JSON.stringify(data),
     success: function(result, status) {
-      message = handleResponse(result);
-      $("#modal-body").html(message);
+      handleResponse(result);
       $("#launch-modal").click();
-
     },
     error: function(jqXHR, textStatus, errorThrown) {
       console.log(jqXHR, textStatus, errorThrown);

@@ -1,11 +1,13 @@
 from flask import Flask, render_template, request
 from not_subscribed import get_unsubscribed_users
+from process_data import process_data
+from send_emails import send_confirmation_email
 
 application = Flask(__name__)
 app = application
 
 # create credentials.json based on template
-def createCredentials(access_token):
+def create_credentials(access_token):
     PATH_TEMPLATE = 'json/template.json'
     PATH_CREDENTIALS = 'json/credentials.json'
     
@@ -19,6 +21,29 @@ def createCredentials(access_token):
         f.write(content)
 
 
+def book_appointments(data_front_end):
+    data = {
+        'host': data_front_end['emails'][0],
+        'emails': data_front_end['emails'],
+        'duration': data_front_end['duration'],
+        'description': data_front_end['event'],
+        'start_date': data_front_end['date']
+    }
+    process_data(data)
+
+
+def send_follow_emails(data_front_end):
+    data = {
+        'host': data_front_end['emails'][0],
+        'emails': data_front_end['emails'],
+        'duration': data_front_end['duration'],
+        'event_name': data_front_end['event'],
+        'start_date': data_front_end['date'],
+        'description': data_front_end['description'],
+    }
+    send_confirmation_email(data)
+
+
 @app.route("/submit", methods=['POST'])
 def submit():
     response = {
@@ -28,13 +53,15 @@ def submit():
     data = request.get_json()
     access_token = data['accessToken']
     print(data)
-    createCredentials(access_token)
+    create_credentials(access_token)
 
     # get unsubscribed users
     response['unsubscribedEmails'] = get_unsubscribed_users(data['emails'])
 
-    # if (len(unsubscribed_users) == 0): # good sign
-    print(response)
+    if (len(response['unsubscribedEmails']) == 0): # good sign, let's book
+        book_appointments(data)  
+        send_follow_emails(data)
+
     return response
         
 

@@ -21,7 +21,12 @@ def send_confirmation_email(data):
         from_email = Email("info@calconnect.com")
         to_email = To(email)
         subject = "Your CalConnect Meeting Has Been Successfully Scheduled!"
-        content = "Congratulations! Your Meeting Named " + data['event_name'] + " has been successfully scheduled and starts on " + data['start_date']
+        content = "Thank you for using CalConnect!\n\n The appointment booked by account "\
+                + data['host'] + " was added to your calendar. Make sure you are not missing it."\
+                + "\n\nWords from host:\n"\
+                + "    \"" + data['description'] + "\""\
+                + "\n\n Sincerely,\n CalConnect Team"
+
         mail = Mail(from_email, to_email, subject, content)
         response = sg.client.mail.send.post(request_body=mail.get())
         print(response.status_code)
@@ -29,5 +34,4 @@ def send_confirmation_email(data):
         print(response.headers)
 
 
-
-send_confirmation_email(test)
+# send_confirmation_email(test)
