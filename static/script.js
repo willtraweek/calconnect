@@ -53,8 +53,6 @@ function showEmails() {
   }
 }
 
-var clientId = '216755557118-p3v6c9ajm4bmmk4oh73vs83a05mi7g10.apps.googleusercontent.com';
-
 // Sign-in success callback
 function onLoginSuccess(googleUser) {
   // console.log(googleUser);
