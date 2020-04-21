@@ -75,7 +75,6 @@ def get_invitees_with_empty_calendar(invitees, next30DaysSchedule):
             invitees_with_empty_cal.append(invitee)
     return invitees_with_empty_cal
     
-    
     '''
     for invitee in invitees:                             # get invitees with empty
         busy_times = next30DaysSchedule[invitee]['busy'] # schedule for the next 30 days
@@ -109,7 +108,6 @@ def get_invitees_not_subscribed(invitees_with_empty_cal, next24HourSchedule):
     
     return invitees_not_subscribed
 
-
 def delete_dummy_event(api):
     events = api.events().list(calendarId='primary').execute()['items'] # get all events
 
@@ -138,7 +136,7 @@ async def get_unsubscribed_users(invitees):
     #delete_dummy_event(api)
     return invitees_not_subscribed
 
-
+'''
 def main():
     invitees = ["tim.tyrus.jones@gmail.com"]
     # invitees = ["jim.erso.prescott@gmail.com    ", "lephuocdinh99@gmail.com"]
@@ -151,9 +149,7 @@ def main():
 
 if __name__ == '__main__': 
     main()
-
-
-
+'''
 
 '''
 def get_unsubscribed_users(invitees):
