@@ -119,6 +119,15 @@ def schedule_meeting(meeting, calendar, location=None, description=None):
         "start": {"dateTime": item(meeting.slots).start.isoformat()},
         "end": {"dateTime": item(meeting.slots).end.isoformat()},
         "attendees": [{"email": e} for e in meeting.invitees if e != calendar],
+        "reminders" : {
+            "useDefault": False,
+            "overrides": [
+                {
+                    "method": "email",
+                    "minutes": 24*60  #1 day reminder
+                }
+            ]
+        }
     }
 
     return service.events().insert(calendarId=calendar, body=body).execute()
