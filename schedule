@@ -119,7 +119,7 @@ def schedule_meeting(meeting, calendar, location=None, description=None):
         "start": {"dateTime": item(meeting.slots).start.isoformat()},
         "end": {"dateTime": item(meeting.slots).end.isoformat()},
         "attendees": [{"email": e} for e in meeting.invitees if e != calendar],
-        "reminders" : {
+        "reminders": {
             "useDefault": False,
             "overrides": [
                 {
