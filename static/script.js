@@ -1,4 +1,5 @@
 let invitees = [];
+let phones = [];
 let hostName = "";
 let accessToken = "";
 
@@ -52,6 +53,53 @@ function showEmails() {
     })
   }
 }
+
+
+function addPhone() {
+  let phone = document.getElementById('input-phone').value;
+  
+  if (phones.indexOf(phone) >= 0) {
+    alert("You already add this phone");
+    return;
+  }
+
+  let regex = /^[0-9]+$/;
+  if (!regex.test(phone)) {
+    alert("Invalid phone");
+    return;
+  }
+  phones.push(phone);
+  showPhones();
+  document.getElementById('input-phone').value = ""
+}
+
+
+function removePhone(phone) {
+  let index = invitees.indexOf(phone);
+  phones.splice(index, 1);
+  showPhones();
+}
+
+function showPhones() {
+  let list = document.getElementById("phone-list")
+  if (invitees.length === 0) {
+    list.innerHTML = `<span style="color:gray"> No phone`;
+  }
+  else {
+    list.innerHTML = "Phones: ";
+    phones.map((phone, id) => {
+      let badge =  `<span class="phone-list badge badge-info ml-2"
+                          onclick=removePhone('${phone}')>
+                       ${phone}
+                       <span class="ml-1">
+                          X
+                       </span>
+                    </span>`
+      list.innerHTML += badge;
+    })
+  }
+}
+
 
 // Sign-in success callback
 function onLoginSuccess(googleUser) {
@@ -172,7 +220,8 @@ function formSubmit() {
 // load all contents
 document.addEventListener("DOMContentLoaded", function(event) { 
   showEmails();
-  
+  showPhones();
+
   document.getElementById("user-welcome").style.display = "none";
 
   document.getElementById("form").onsubmit = function(e) {
