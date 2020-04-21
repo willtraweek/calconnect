@@ -40,6 +40,7 @@ def schedule_dummy_event(invitees_with_empty_cal, api):
 
 
 def get_schedule_for_next_24_hours(invitees_with_empty_cal, api):
+    if (len(invitees_with_empty_cal) == 0): return
     next24Hours = { 'timeMin': dateTime(), 
                     'timeMax': dateTime(1),
                     'items': [{'id': invitee} for invitee in invitees_with_empty_cal] }
