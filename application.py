@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from not_subscribed import get_unsubscribed_users
 from process_data import process_data
 from send_emails import send_confirmation_email
+from send_texts import send_confirmation_text
 
 application = Flask(__name__)
 app = application
@@ -44,6 +45,11 @@ def send_follow_emails(data_front_end):
     send_confirmation_email(data)
 
 
+def send_following_text(data_front_end):
+    for number in data_front_end['phones']:
+        send_confirmation_text(number)
+
+
 @app.route("/submit", methods=['POST'])
 def submit():
     response = {
@@ -61,6 +67,7 @@ def submit():
     if (len(response['unsubscribedEmails']) == 0): # good sign, let's book
         book_appointments(data)  
         send_follow_emails(data)
+        send_following_text(data)
 
     return response
         

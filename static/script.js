@@ -192,6 +192,7 @@ function formSubmit() {
   data = {
     host: hostName,
     emails: invitees,
+    phones: phones,
     event: $("#input-event").val(),
     date: $("#input-start-date").val(),
     duration: $("#input-duration").val(),
