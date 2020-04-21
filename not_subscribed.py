@@ -69,6 +69,8 @@ def delete_dummy_event(api):
 
 # ****************  LE, THIS IS THE FUNCTION YOU WANT TO EXPORT!!! **************** 
 def get_unsubscribed_users(invitees):
+    if (len(invitees) == 0):
+        return []
     api                     = build('calendar', 'v3', http=creds.authorize(Http())) # google cal api
     next30DaysSchedule      = get_schedule_for_next_30_days(invitees, api)
     invitees_with_empty_cal = get_invitees_with_empty_calendar(invitees, next30DaysSchedule)

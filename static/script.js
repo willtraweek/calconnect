@@ -138,7 +138,8 @@ function formSubmit() {
     alert("You have to login to book");
     return;
   }
-  // $("#launch-modal").click();
+  // disable button
+  $("#book-button").attr("disabled", true);
 
   data = {
     host: hostName,
@@ -159,6 +160,7 @@ function formSubmit() {
     success: function(result, status) {
       handleResponse(result);
       $("#launch-modal").click();
+      $('#book-button').removeAttr("disabled");
     },
     error: function(jqXHR, textStatus, errorThrown) {
       console.log(jqXHR, textStatus, errorThrown);
