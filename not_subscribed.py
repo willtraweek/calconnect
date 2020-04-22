@@ -80,12 +80,13 @@ def get_unsubscribed_users(invitees):
     delete_dummy_event(api)
     print(invitees_not_subscribed)
     return invitees_not_subscribed
-'''
-def main():
-    invitees = ["james.jones.miller.93@gmail.com", "lephuocdinh99@gmail.com", "ben.freddie.johnson@gmail.com",
-                "annie.xiu.lam@gmail.com", "jim.erso.prescott@gmail.com", "john.yohan.park@gmail.com"]
-    get_unsubscribed_users(invitees)
 
-if __name__ == '__main__': 
-    main()
-'''
+
+# def main():
+#     invitees = ["james.jones.miller.93@gmail.com", "lephuocdinh99@gmail.com", "ben.freddie.johnson@gmail.com",
+#                 "annie.xiu.lam@gmail.com", "jim.erso.prescott@gmail.com", "john.yohan.park@gmail.com"]
+#     get_unsubscribed_users(invitees)
+
+# if __name__ == '__main__': 
+#     main()
+

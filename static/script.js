@@ -75,7 +75,7 @@ function addPhone() {
 
 
 function removePhone(phone) {
-  let index = invitees.indexOf(phone);
+  let index = phones.indexOf(phone);
   phones.splice(index, 1);
   showPhones();
 }
