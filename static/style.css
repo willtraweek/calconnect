@@ -15,7 +15,8 @@ body {
     padding-right: 2em;
 }
 
-.invitee-email:hover {
+.invitee-email:hover,
+.phone-list:hover {
     cursor: pointer;
     background-color: red;
 }

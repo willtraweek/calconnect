@@ -1,4 +1,5 @@
 let invitees = [];
+let phones = [];
 let hostName = "";
 let accessToken = "";
 
@@ -53,7 +54,52 @@ function showEmails() {
   }
 }
 
-var clientId = '216755557118-p3v6c9ajm4bmmk4oh73vs83a05mi7g10.apps.googleusercontent.com';
+
+function addPhone() {
+  let phone = document.getElementById('input-phone').value;
+  
+  if (phones.indexOf(phone) >= 0) {
+    alert("You already add this phone");
+    return;
+  }
+
+  let regex = /^[0-9]+$/;
+  if (!regex.test(phone)) {
+    alert("Invalid phone");
+    return;
+  }
+  phones.push(phone);
+  showPhones();
+  document.getElementById('input-phone').value = ""
+}
+
+
+function removePhone(phone) {
+  let index = phones.indexOf(phone);
+  phones.splice(index, 1);
+  showPhones();
+}
+
+function showPhones() {
+  let list = document.getElementById("phone-list")
+  if (invitees.length === 0) {
+    list.innerHTML = `<span style="color:gray"> No phone`;
+  }
+  else {
+    list.innerHTML = "Phones: ";
+    phones.map((phone, id) => {
+      let badge =  `<span class="phone-list badge badge-info ml-2"
+                          onclick=removePhone('${phone}')>
+                       ${phone}
+                       <span class="ml-1">
+                          X
+                       </span>
+                    </span>`
+      list.innerHTML += badge;
+    })
+  }
+}
+
 
 // Sign-in success callback
 function onLoginSuccess(googleUser) {
@@ -107,16 +153,46 @@ function signOut() {
 }
 
 
+// return a message to user
+function handleResponse(resp) {
+  if (resp['unsubscribedEmails'].length > 0){
+    message = "We are not able to book the appointment. You need to subscribe these user(s):\n"
+    message += "<ul>\n";
+    resp['unsubscribedEmails'].map(email => {
+      message += `<li>${email}</li>\n`;
+    });
+    message += "</ul>"
+    $("#modal-body").html(message);
+    $("#modal-title").html("Sorry :(");
+    // change modal button green -> red
+    $("#modal-button").removeClass("btn-success");
+    $("#modal-button").addClass("btn-danger");
+  }
+  else {
+    let message = "We booked your appointment! Thank you for using our website!";
+    $("#modal-body").html(message);
+    $("#modal-title").html("Thank you <3");
+    $("#modal-button").addClass("btn-success");
+    $("#modal-button").removeClass("btn-danger");
+    document.getElementById("modal-button").onclick = 
+      function() {
+        location.reload();
+      }
+  }
+}
+
 function formSubmit() {
   if (invitees.length == 0) {
     alert("You have to login to book");
     return;
   }
-  // $("#launch-modal").click();
+  // disable button
+  $("#book-button").attr("disabled", true);
 
   data = {
     host: hostName,
     emails: invitees,
+    phones: phones,
     event: $("#input-event").val(),
     date: $("#input-start-date").val(),
     duration: $("#input-duration").val(),
@@ -131,8 +207,9 @@ function formSubmit() {
     dataType : 'json',
     data : JSON.stringify(data),
     success: function(result, status) {
-      $("#modal-body").html(result["result"]);
+      handleResponse(result);
       $("#launch-modal").click();
+      $('#book-button').removeAttr("disabled");
     },
     error: function(jqXHR, textStatus, errorThrown) {
       console.log(jqXHR, textStatus, errorThrown);
@@ -140,10 +217,12 @@ function formSubmit() {
   })
 }
 
+
 // load all contents
 document.addEventListener("DOMContentLoaded", function(event) { 
   showEmails();
-  
+  showPhones();
+
   document.getElementById("user-welcome").style.display = "none";
 
   document.getElementById("form").onsubmit = function(e) {
